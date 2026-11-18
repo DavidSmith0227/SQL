@@ -1,22 +1,3 @@
-/*
-	_____HOMEWORK_____
-	1. 
-		A. Name the field that should be the Primary Key be on DBO.Student
-		B. Name any Foreign Key on any other table.
-	2. Write a query to show the order of students by their Overall Attendance Rate for Acting Classes.
-	3. Write a query to show who arrived Latest to an Acting Class, without being late or directly on-time.
-	4. Write a query to show any time in an Acting class where a student was present and either of the Time values were not logged.
-	5. Write a query to add yourself to the Students Table.
-	-- Bonus // DDL --
-	6. What normalization steps would you recommend for this DB?
-*/
-
-CREATE TABLE DBO.Student
-	(
-	studentId INT PRIMARY KEY,
-	firstName VARCHAR(200) NOT NULL,
-	lastName VARCHAR(200) NOT NULL
-	);
 
 INSERT INTO DBO.Student
 VALUES
@@ -32,13 +13,6 @@ VALUES
 	(0010, 'Frank', 'Stein')
 	;
 
-CREATE TABLE DBO.Professor
-	(
-	professorId INT PRIMARY KEY,
-	firstName VARCHAR(200) NOT NULL,
-	lastName VARCHAR(200) NOT NULL,
-	courseType VARCHAR(20) NULL
-	);
 
 INSERT INTO DBO.Professor
 VALUES
@@ -49,13 +23,6 @@ VALUES
 	(1005, 'Montain', 'Dough', NULL)
 	;	
 
-CREATE TABLE DBO.Class 
-	(
-	classId CHAR(7) PRIMARY KEY,
-	professorId INT NULL,
-	class_begin_time TIME(0) NOT NULL,
-	class_end_time TIME(0) NOT NULL
-	);
 
 INSERT INTO DBO.Class
 VALUES
@@ -64,15 +31,6 @@ VALUES
 	('ACTNG01', 1004, '08:00:00', '09:44:59')
 	;
 
-CREATE TABLE DBO.Attendance
-	(
-	studentID INT NOT NULL,
-	classId CHAR(7) NOT NULL,
-	classDate DATE NOT NULL,
-	isPresent BIT DEFAULT 0,
-	arrivalTime TIME(0) NULL,
-	departureTime TIME(0) NULL
-	);
 
 INSERT INTO DBO.Attendance
 VALUES

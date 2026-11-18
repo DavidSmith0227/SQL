@@ -1,0 +1,15 @@
+|	
+|	Scenario: This is an initial SQL DB setup for a new college
+|	Please note which interpreter you are using
+|	
+|	_____Assesment_Questions_____
+|	1. Name the field that should be the Primary Key be on DBO.Student
+|	2. Name any Foreign Key on any other table.
+|	3. Write a query to show the order of students by their Overall Attendance Rate for Acting Classes.
+|	4. Write a query to show who arrived Latest to an Acting Class, without being late or directly on-time.
+|	5. Write a query to show any time in an Acting class where a student was present and either of the Time values were not logged.
+|	6. Write a query to add yourself to the Students Table.
+|	
+|	-- Bonus // DDL --
+|	7. What steps would you recommend for improving this DB?
+|	
