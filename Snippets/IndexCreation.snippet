@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+<_locDefinition xmlns="urn:locstudio">
+    <_locDefault _loc="locNone" />
+    <_locTag _loc="locData">Title</_locTag>
+    <_locTag _loc="locData">Description</_locTag>
+    <_locTag _loc="locData">Author</_locTag>
+    <_locTag _loc="locData">ToolTip</_locTag>
+	<_locTag _loc="locData">Default</_locTag>
+</_locDefinition>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>IndexCreation</Title>
+			<Shortcut>IndexCreation</Shortcut>
+			<Description>Format for creating NonClusteredIndex</Description>
+			<Author>David Smith</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="SQL"><![CDATA[IF EXISTS (SELECT name FROM sys.indexes
+            WHERE name = N'NCIX_indexName')
+	BEGIN		
+		DROP INDEX NCIX_indexName ON Purchasing.ProductVendor
+	END
+GO
+CREATE NONCLUSTERED INDEX NCIX_indexName_onColumns
+    ON schema.table(column)
+--INCLUDE ;
+GO]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

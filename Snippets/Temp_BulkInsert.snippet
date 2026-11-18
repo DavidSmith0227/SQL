@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+<_locDefinition xmlns="urn:locstudio">
+    <_locDefault _loc="locNone" />
+    <_locTag _loc="locData">Title</_locTag>
+    <_locTag _loc="locData">Description</_locTag>
+    <_locTag _loc="locData">Author</_locTag>
+    <_locTag _loc="locData">ToolTip</_locTag>
+	<_locTag _loc="locData">Default</_locTag>
+</_locDefinition>
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Temp_Insert</Title>
+			<Shortcut>Temp_Insert</Shortcut>
+			<Description>Format for allowing >2000 row insert</Description>
+			<Author>David Smith</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="SQL"><![CDATA[CREATE TABLE #ImpactList (ID INT, strField VARCHAR(200))
+/*
+add or remove extra fields as necessary
+*/
+INSERT INTO #ImpactList(ID, strField)
+SELECT ID, strField
+FROM 
+	(VALUES
+
+		--('10197', 'cat'),
+		--('10197', 'cat2')
+	)
+as sub (ID, strField);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
