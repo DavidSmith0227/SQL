@@ -1,0 +1,47 @@
+|	
+|	Scenario: This is an initial SQL DB setup for a new college
+|	
+|	_____Assesment_Questions_____
+|	1. Name the field that should be the Primary Key be on DBO.Student
+|	2. Name any Foreign Key on any other table.
+|	3. Write a query to show the order of students by their Overall Attendance Rate for Acting Classes.
+|	4. Write a query to show who arrived Latest to an Acting Class, without being late or directly on-time.
+|	5. Write a query to show any time in an Acting class where a student was present and either of the Time values were not logged.
+|	6. Write a query to add yourself to the Students Table.
+|	
+|	-- Bonus // DDL --
+|	7. What steps would you recommend for improving this DB?
+|	
+
+============================================
+"What are we looking for in these answers?"
+============================================
+
+1 & 2. primarily for filtering out those that dont know sql.
+	- bonus points for going above and beyond.
+
+3. can they use Order By effectively, along with seeing how they think. (this can be pulled as an overall, by date, by person etc)
+	- Commonly see Group By on these bonus points for using HAVING
+
+4. checking static vs variable data. Prefer they reference DB tables instead of hard coding the value. (class_begin_time vs 8:00Pm)
+
+5. Aiming for proper use of Parenthesis on OR vs AND statements as lack of parenthesis can result in incorrect results.
+
+6. do they know / can they google search how to insert a value
+	- Bonus points if they use a function to identify the studentId ( ie: max(studentId) + 1 ) instead of hard-coding it. (ex: '0011')
+
+7. Some examples:
+	Create indexes, and foregin key constraints for all tables where applicable.
+
+	expand data collected on DBO.Student (middleName, DateOfBirth, etc). this will enable possible constraints to limit unintended duplication, and provide useful data values for analytics.
+	dbo.student should perhaps start with 10000001 for data visual consistency, and permit better ETL or other automated data ingestion. (reduces leading Zero issues. ie: 0001 != 1)
+
+	for scalability, 
+		DBO.Class should be seperated so a single class can be taught multiple times. (ex. create a new table for "Course" so each course can be taught in multiple Classes)
+		classId should be an INT/BIGINT and not a CHAR, and reference a parent table. add 'className' to parent table as NVARCHAR() instead of CHAR() to save space and be more computationally efficient.
+		NOTE* this would also make dbo.Attendance perform much better once there is a larger data set.
+
+	DBO.Professor.courseType could be tied to the course type, but a single professor/teacher may teach more than one subject. 
+		this data would be better held on a seperate table with a composite primary key of professorId and courseId
+
+	Create a constraint on DBO.Attendance to limit an Insert where isPresent=0 and the arrival or departure time are NOT NULL, to prevent incorrect reporting. (and vice versa)
